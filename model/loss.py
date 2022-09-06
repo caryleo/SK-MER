@@ -3,7 +3,7 @@ Description:
 Autor: Gary Liu
 Date: 2021-07-02 11:56:32
 LastEditors: Gary Liu
-LastEditTime: 2021-12-17 20:40:35
+LastEditTime: 2022-09-06 22:44:59
 '''
 import torch
 import torch.nn.functional as F
@@ -157,51 +157,6 @@ def info_nce_mlp_2(knowledge_batch_list, feature_batch_list, temperature):
     assert logits.size(0) == labels.size(0)
 
     return F.cross_entropy(logits / temperature, labels)
-
-# def triplet_2(score_pos, score_neg, k_index_neg_list, margin=1.0):
-#     score_pos_list, score_neg_list = list(), list() # batch, 1
-#     for i, (score_p, score_n) in enumerate(zip(score_pos, score_neg)):
-#         score_pos_list.append(score_pos[i][k_index_neg_list[i]]) # batch, 1
-#         score_neg_list.append(score_neg[i][k_index_neg_list[i]]) # batch, 1
-
-#     # score_pos_norm, score_neg_norm = F.normalize(score_pos, p=1, dim=-1), F.normalize(score_neg, p=1, dim=-1)
-#     score_pos = torch.stack(score_pos_list, dim=0) # batch, 1
-#     score_neg = torch.stack(score_neg_list, dim=0) # batch, 1
-
-#     # return F.relu(score_pos - score_neg + margin).sum()
-#     return F.relu(score_pos - score_neg + margin).mean()
-
-#     # return max(0, distance_pos - distance_neg + margin)
-
-# def ranking_2(score_pos, score_neg, k_index_neg_list, margin=1.0):
-#     score_pos_list, score_neg_list = list(), list() # batch, 1
-#     for i, (score_p, score_n) in enumerate(zip(score_pos, score_neg)):
-#         score_pos_list.append(score_pos[i][k_index_neg_list[i]]) # batch, 1
-#         score_neg_list.append(score_neg[i][k_index_neg_list[i]]) # batch, 1
-
-#     # score_pos_norm, score_neg_norm = F.normalize(score_pos, p=1, dim=-1), F.normalize(score_neg, p=1, dim=-1)
-#     score_pos = torch.stack(score_pos_list, dim=0) # batch, 1
-#     score_neg = torch.stack(score_neg_list, dim=0) # batch, 1
-
-#     return (score_pos + F.relu(margin - score_neg)).sum()
-    
-
-# def info_nce_2(score_pos, score_neg, k_index_neg_list, temperature=1.0):
-#     score_pos_list, score_neg_list = list(), list() # batch, 1
-#     for i, (score_p, score_n) in enumerate(zip(score_pos, score_neg)):
-#         score_pos_list.append(score_p[k_index_neg_list[i]]) # batch, 1
-#         score_neg_list.append(score_n[k_index_neg_list[i]]) # batch, 1 
-
-#     score_pos = torch.stack(score_pos_list, dim=0) # batch, 1
-#     score_neg = torch.stack(score_neg_list, dim=0) # batch, 1
-    
-#     # score_pos_norm, score_neg_norm = F.normalize(score_pos, p=1, dim=-1), F.normalize(score_neg, p=1, dim=-1)
-#     # logits = torch.cat([score_pos_norm, score_neg_norm], dim=-1) # batch, 2
-#     logits = torch.cat([score_pos, score_neg], dim=-1) # batch, 2
-#     # labels = torch.zeros(len(logits), dtype=torch.long, device=score_pos_norm.device)
-#     labels = torch.zeros(len(logits), dtype=torch.long, device=score_pos.device)
-
-#     return F.cross_entropy(logits /temperature, labels)
 
 def info_nce_loss_ck(feature_batch_list, kecrs_batch_list, kecrs_pos_batch_list, kecrs_neg_batch_list, temperature):
     # 正负样本之间的对比
