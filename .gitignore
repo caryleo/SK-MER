@@ -138,6 +138,3 @@ datasets/
 .vscode/
 .idea/
 __MACOSX/
-data
-saved
-EmoRC.yml
