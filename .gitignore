@@ -129,9 +129,7 @@ dmypy.json
 .pyre/
 
 # input data, saved log, checkpoints
-data/
 input/
-saved/
 datasets/
 
 # editor, os cache directory
