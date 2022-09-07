@@ -1,13 +1,13 @@
 {
-    "name": "keer_3.0_test4",
-    "message":"KEER 3.0 Test 4",
-    "mode": "test",
+    "name": "SK-MER Fine-Grained",
+    "message":"SK-MER Fine-Grained Train",
+    "mode": "cl",
     "anno_file": "data/anno.json",
     "data_file": "data/data.json",
-    "id_file": "data/test_id.txt",
-    "val_file": false,
+    "id_file": "data/train_id.txt",
+    "val_file": true,
     "val_id_file": "data/test_id.txt",
-    "emo_type": "primary",
+    "emo_type": "fine_grained",
     "speakers": ["sheldon", "leonard", "howard", "rajesh", "penny", "bernadette", "amy", "others"],
     "audio": {
         "feature_file": "data/features/audio_features.json",
@@ -64,7 +64,7 @@
         "type": "KEER_KE_CL_CK",
         "args":{
             "D_e": 128,
-            "graph_attention_weight": 0.7,
+            "graph_attention_weight": 1.0,
             "concentrator_factor": 1,
             "context_length": 2
         }
@@ -87,5 +87,25 @@
         "macro_f1",
         "weighted_f1",
         "top_k_acc"
-    ]
+    ],
+    "lr_scheduler": {
+        "type": "StepLR",
+        "args": {
+            "step_size": 50,
+            "gamma": 0.9
+        }
+    },
+    "trainer": {
+        "type": "KEERTrainer_KE_CL_CK",
+        "epochs": 1000,
+
+        "save_dir": "saved/",
+        "save_period": 50,
+        "verbosity": 2,
+        
+        "monitor": "max val_accuracy",
+        "early_stop": 50,
+
+        "tensorboard": false
+    }
 }

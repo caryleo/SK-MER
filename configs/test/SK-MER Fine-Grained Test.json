@@ -1,13 +1,13 @@
 {
-    "name": "keer_3.0_test4",
-    "message":"KEER 3.0 Test 4",
+    "name": "SK-MER Fine-Grained Test",
+    "message":"SK-MER Fine-Grained Test",
     "mode": "cl",
     "anno_file": "data/anno.json",
     "data_file": "data/data.json",
     "id_file": "data/train_id.txt",
     "val_file": true,
     "val_id_file": "data/test_id.txt",
-    "emo_type": "primary",
+    "emo_type": "fine_grained",
     "speakers": ["sheldon", "leonard", "howard", "rajesh", "penny", "bernadette", "amy", "others"],
     "audio": {
         "feature_file": "data/features/audio_features.json",
@@ -64,7 +64,7 @@
         "type": "KEER_KE_CL_CK",
         "args":{
             "D_e": 128,
-            "graph_attention_weight": 0.7,
+            "graph_attention_weight": 1.0,
             "concentrator_factor": 1,
             "context_length": 2
         }
@@ -106,6 +106,6 @@
         "monitor": "max val_accuracy",
         "early_stop": 50,
 
-        "tensorboard": true
+        "tensorboard": false
     }
 }

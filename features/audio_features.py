@@ -3,10 +3,10 @@ Description:
 Autor: Gary Liu
 Date: 2021-07-02 11:56:31
 LastEditors: Gary Liu
-LastEditTime: 2022-09-06 22:47:06
+LastEditTime: 2022-09-07 22:04:23
 '''
 import torch
-from utils import read_json, convert_examples_to_ids, build_vocab, debug_print_dims
+from utils import read_json, convert_examples_to_ids, build_vocab
 from base import BaseFeatureExtractor
 
 

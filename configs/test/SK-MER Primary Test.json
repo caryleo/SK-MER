@@ -1,11 +1,11 @@
 {
-    "name": "keer_3.0_test3",
-    "message":"KEER 3.0 Test 3",
-    "mode": "cl",
+    "name": "SK-MER Primary Test",
+    "message":"SK-MER Primary Test",
+    "mode": "test",
     "anno_file": "data/anno.json",
     "data_file": "data/data.json",
-    "id_file": "data/train_id.txt",
-    "val_file": true,
+    "id_file": "data/test_id.txt",
+    "val_file": false,
     "val_id_file": "data/test_id.txt",
     "emo_type": "primary",
     "speakers": ["sheldon", "leonard", "howard", "rajesh", "penny", "bernadette", "amy", "others"],
@@ -61,10 +61,10 @@
         }
     },
     "model": {
-        "type": "KEER_KE_CL",
+        "type": "KEER_KE_CL_CK",
         "args":{
             "D_e": 128,
-            "graph_attention_weight": 1.0,
+            "graph_attention_weight": 0.7,
             "concentrator_factor": 1,
             "context_length": 2
         }
@@ -78,7 +78,7 @@
         }
     },
     "loss": "nll_loss",
-    "loss_cl": "info_nce_mlp_2",
+    "loss_cl": "info_nce_loss_ck",
     "nce_temperature": 0.07,
     "loss_fusion": 1,
     "margin": 1.0,
@@ -87,25 +87,5 @@
         "macro_f1",
         "weighted_f1",
         "top_k_acc"
-    ],
-    "lr_scheduler": {
-        "type": "StepLR",
-        "args": {
-            "step_size": 50,
-            "gamma": 0.9
-        }
-    },
-    "trainer": {
-        "type": "KEERTrainer_KE_CL",
-        "epochs": 1000,
-
-        "save_dir": "saved/",
-        "save_period": 50,
-        "verbosity": 2,
-        
-        "monitor": "max val_accuracy",
-        "early_stop": 50,
-
-        "tensorboard": true
-    }
+    ]
 }

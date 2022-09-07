@@ -3,12 +3,12 @@ Description:
 Autor: Gary Liu
 Date: 2021-07-02 11:56:31
 LastEditors: Gary Liu
-LastEditTime: 2022-09-06 22:47:29
+LastEditTime: 2022-09-07 22:04:38
 '''
 import torch
 import os
 from base import BaseFeatureExtractor
-from utils import read_json, convert_examples_to_ids, build_vocab, debug_print_dims
+from utils import read_json, convert_examples_to_ids, build_vocab
 
 class VisualFeatureExtractor_KE_ALL(BaseFeatureExtractor):
     """视频特征提取类

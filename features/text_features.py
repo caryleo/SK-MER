@@ -3,7 +3,7 @@ Description:
 Autor: Gary Liu
 Date: 2021-09-07 19:02:07
 LastEditors: Gary Liu
-LastEditTime: 2022-09-06 22:47:18
+LastEditTime: 2022-09-07 22:04:31
 '''
 '''
 Description: 
@@ -13,7 +13,7 @@ LastEditors: Gary Liu
 LastEditTime: 2021-07-26 23:11:56
 '''
 import torch
-from utils import read_json, convert_examples_to_ids, build_vocab, debug_print_dims
+from utils import read_json, convert_examples_to_ids, build_vocab
 from base import BaseFeatureExtractor
 
 
